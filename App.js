@@ -1,12 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { TaskApp } from './components/TaskApp';
 
 export default function App() {
+
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Text style={styles.title}>Tareas App</Text>
+      <TaskApp />
+    </SafeAreaView>
   );
 }
 
@@ -17,4 +26,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  containerButton: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingLeft: 20,
+  }
 });
